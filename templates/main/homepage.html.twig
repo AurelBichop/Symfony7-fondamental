@@ -27,6 +27,9 @@
                                         href="{{ path('app_starship_show', { id: ship.id }) }}"
                                     >{{ ship.name }}</a>
                                 </h4>
+                                <div>
+                                    Arrived At: {{ ship.arrivedAt|ago }}
+                                </div>
                             </div>
                         </div>
                         <div class="flex justify-center min-[1174px]:justify-start mt-2 min-[1174px]:mt-0 shrink-0">
@@ -44,10 +47,20 @@
                 {% endfor %}
             </div>
 
-            <p class="text-lg mt-5 text-center md:text-left">
+            <p class="text-lg mt-5 mb-5 text-center md:text-left">
                 Looking for your next galactic ride?
                 <a href="#" class="underline font-semibold">Browse the {{ ships|length * 10 }} starships for sale!</a>
             </p>
+
+            <div>
+                <h2 class="text-4xl font-semibold my-8">ISS Location</h2>
+                <p>{{ issData.timestamp|date }}</p>
+                <p>{{ issData.altitude }}</p>
+                <p>{{ issData.latitude }}</p>
+                <p>{{ issData.longitude }}</p>
+                <p>{{ issData.visibility }}</p>
+            </div>
+
         </div>
     </main>
 {% endblock %}
