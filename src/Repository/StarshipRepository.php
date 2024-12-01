@@ -39,7 +39,7 @@ class StarshipRepository
                 'Delta Tourist',
                 'Kathryn Journeyway',
                 StarshipStatusEnum::WAITING,
-                 new \DateTimeImmutable()
+                new \DateTimeImmutable()
             ),
         ];
     }
