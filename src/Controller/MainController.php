@@ -16,8 +16,6 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function homepage(
         StarshipRepository $starshipRepository,
-        HttpClientInterface $client,
-        CacheInterface $issLocationPool,
         #[Autowire(param: 'iss_location_cache_ttl')] $issLocationCacheTTL
     ): Response {
         //dd($issLocationCacheTTL);
@@ -26,16 +24,10 @@ class MainController extends AbstractController
         $ships = $starshipRepository->findAll();
         $myShip = $ships[array_rand($ships)];
 
-        $issData = $issLocationPool->get('iss_location_data', function () use ($client): array {
-            $response = $client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
-
-            return $response->toArray();
-        });
 
         return $this->render('main/homepage.html.twig', [
             'myShip' => $myShip,
             'ships' => $ships,
-            'issData' => $issData,
         ]);
     }
 }

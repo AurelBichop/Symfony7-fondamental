@@ -51,16 +51,6 @@
                 Looking for your next galactic ride?
                 <a href="#" class="underline font-semibold">Browse the {{ ships|length * 10 }} starships for sale!</a>
             </p>
-
-            <div>
-                <h2 class="text-4xl font-semibold my-8">ISS Location</h2>
-                <p>Updated at: {{ issData.timestamp|date }}</p>
-                <p>{{ issData.altitude }}</p>
-                <p>{{ issData.latitude }}</p>
-                <p>{{ issData.longitude }}</p>
-                <p>{{ issData.visibility }}</p>
-            </div>
-
         </div>
     </main>
 {% endblock %}
